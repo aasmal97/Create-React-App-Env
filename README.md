@@ -12,7 +12,7 @@ This Github Action generates a local .env file in a github runner, by extracting
 Below is an example of the minimum appropriate configuration 
 ```
 name: Create Env File
-uses: aasmal97/create-env-file@2.1.0
+uses: aasmal97/create-env-file@v3.0.0
 with: 
   APP_SECRETS: ${{toJson(secrets)}}
 ```
@@ -26,7 +26,7 @@ with:
 ## Full Example of usage:
 ```
 name: Create Env
-uses: aasmal97/create-env-file@2.1.0
+uses: aasmal97/create-env-file@v3.0.0
 with: 
   APP_SECRETS: ${{toJson(secrets)}}
   ENV_FILE_NAME: 'local'
@@ -38,7 +38,7 @@ with:
 
 ```
 name: Create Env
-uses: aasmal97/create-env-file@2.1.0
+uses: aasmal97/create-env-file@v3.0.0
 with: 
   WORKING_DIRECTORY_PATH: ${{ github.workspace }}/src
   APP_SECRETS: ${{toJson(secrets)}}
