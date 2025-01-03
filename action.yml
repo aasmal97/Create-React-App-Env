@@ -1,4 +1,4 @@
-name: create-env-file
+name: Create .env files
 author: Arky Asmal
 description: Create a .env file in a github runner, from environment variables. Can be used prior to the build step of an application
 inputs:
