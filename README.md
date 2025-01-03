@@ -22,7 +22,7 @@ with:
 - `ENV_FILE_NAME`: If you want to customized the .env name (i.e `local.env`, etc), add the desired name here. ***(optional)***
 - `DESTINATION_PATH`: The ABSOLUTE PATH, that you want the .env file to be generated in ***(optional)***
 - `WORKING_DIRECTORY_PATH`: The ABSOLUTE PATH, that you want the action to start at ***(optional)***
-- `PREFIX_FILTER`: A regex pattern that matches a secret's name, so it can be extracted. Commonly used to match for prefix patterns like `REACT_APP`
+- `PREFIX_FILTER`: A regex pattern that matches a secret's name, so it can be extracted. Commonly used to match for prefix patterns like `REACT_APP`. If not defined, it matches ALL secrets passed into the action ***(optional)***
 ## Full Example of usage:
 ```yaml
 name: Create Env
