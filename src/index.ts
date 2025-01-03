@@ -31,7 +31,7 @@ const findRootPackageJson = (
   const packagePath = path.join(currDirectory, "package.json");
   if (fs.existsSync(packagePath)) return currDirectory;
   const pathAbove = path.join(currDirectory, "..");
-  return findRootPackageJson(startDirectory, pathAbove, packagePath);
+  return findRootPackageJson(startDirectory, pathAbove, currDirectory);
 };
 const moveFile = async ({
   fileName,
