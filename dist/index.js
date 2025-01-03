@@ -5130,11 +5130,10 @@ var parseSercets = (inputs) => {
   }
 };
 var findRootPackageJson = (startDirectory, currDirectory, prevDirectory) => {
-  console.log(currDirectory, prevDirectory);
   if (currDirectory === prevDirectory)
     return startDirectory;
-  const packagePath2 = path.join(currDirectory, "package.json");
-  if (fs.existsSync(packagePath2))
+  const packagePath = path.join(currDirectory, "package.json");
+  if (fs.existsSync(packagePath))
     return currDirectory;
   const pathAbove = path.join(currDirectory, "..");
   return findRootPackageJson(startDirectory, pathAbove, currDirectory);
@@ -5146,13 +5145,13 @@ var moveFile = async ({
   extension
 }) => {
   const fullFileName = extension ? `${fileName}.${extension}` : fileName;
-  let curr_path2 = path.join(directoryStart, fullFileName);
+  let curr_path = path.join(directoryStart, fullFileName);
   let destination_folder = directoryDes;
   let destination = path.join(destination_folder, fullFileName);
   if (!fs.existsSync(destination_folder)) {
     await fsPromises.mkdir(destination_folder);
   }
-  await mvPromise(curr_path2, destination);
+  await mvPromise(curr_path, destination);
 };
 var createEnv = async ({
   customName,
@@ -5243,9 +5242,7 @@ var main = async () => {
     prefixFilter
   });
 };
-var curr_path = path.resolve(`${__dirname}/../../..`);
-var packagePath = findRootPackageJson(curr_path, curr_path);
-console.log(packagePath);
+main();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   createEnvFile,
