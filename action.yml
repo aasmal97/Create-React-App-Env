@@ -1,15 +1,17 @@
-name: create-react-app-env
+name: create-env-file
 author: Arky Asmal
-description: Create a .env file in a github runner of react app environment variables. Can be used prior to the build step of a React App
+description: Create a .env file in a github runner, from environment variables. Can be used prior to the build step of an application
 inputs:
-  REACT_APP_SECRETS:
+  APP_SECRETS:
     required: true
-  ENV_FILE_NAME: 
+  PREFIX_FILTER:
+    required: false
+  ENV_FILE_NAME:
     required: false
   DESTINATION_PATH:
     required: false
   WORKING_DIRECTORY_PATH:
     required: false
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"

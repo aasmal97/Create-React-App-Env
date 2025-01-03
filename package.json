@@ -1,7 +1,7 @@
 {
-  "name": "create-react-app-env",
-  "version": "2.0.0",
-  "description": "Create a .env file in a github runner of react app environment variables. Can be used prior to the build step of a React App",
+  "name": "create-env-file",
+  "version": "3.0.0",
+  "description": "Create a .env file in a github runner from environment variables. Can be used prior to the build step of an app",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",

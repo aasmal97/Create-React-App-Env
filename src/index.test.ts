@@ -2,7 +2,7 @@ import { createEnvFile } from ".";
 import * as fs from "fs";
 import * as path from "path";
 describe("createEnvFile function case 1", () => {
-  test("should create and move env file with REACT_APP_SECRETS inputs", async () => {
+  test("should create and move env file with APP_SECRETS inputs", async () => {
     const inputs = JSON.stringify({
       REACT_APP_SECRET_KEY: "secret",
       OTHER_SECRET_KEY: "other-secret",
@@ -11,6 +11,7 @@ describe("createEnvFile function case 1", () => {
     // const customDirectory = "/test/directory";
     await createEnvFile({
       inputs,
+      prefixFilter: "REACT_APP.*",
       //customName,
       //   customDirectory,
     });
@@ -26,7 +27,7 @@ describe("createEnvFile function case 1", () => {
 });
 
 describe("createEnvFile function case 2", () => {
-  test("should create and move env file with REACT_APP_SECRETS inputs", async () => {
+  test("should create and move env file with APP_SECRETS inputs", async () => {
     const inputs = JSON.stringify({
       REACT_APP_SECRET_KEY: "secret",
       OTHER_SECRET_KEY: "other-secret",

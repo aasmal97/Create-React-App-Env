@@ -37,20 +37,25 @@ const createEnv = async ({
   customName,
   inputs,
   workingDirectory,
+  prefixFilter = ".*",
 }: {
   customName?: string;
   inputs: string;
   workingDirectory?: string;
+  prefixFilter?: string;
 }) => {
   const fileName = customName ? customName : "";
   const secretsParse = JSON.parse(inputs) as { [key: string]: string };
-  const reactAppSecrets = Object.entries(secretsParse).filter(([key, value]) =>
-    /REACT_APP.*/.test(key)
-  );
+  const appSecrets = Object.entries(secretsParse).filter(([key, value]) => {
+    //ensure this is never logged
+    core.setSecret(value);
+    const regex = new RegExp(prefixFilter);
+    return regex.test(key);
+  });
   const envValues: {
     [key: string]: string;
   } = {};
-  for (let [key, value] of reactAppSecrets) envValues[key] = value;
+  for (let [key, value] of appSecrets) envValues[key] = value;
   const envContent = Object.keys(envValues).map(
     (key) => `${key} = "${envValues[key]}"\r\n`
   );
@@ -58,8 +63,8 @@ const createEnv = async ({
   const startFilePath = path.join(startDirectory, `${fileName}.env`);
   await fsPromises.writeFile(startFilePath, envContent);
   //notify what secrets were copied
-  if (reactAppSecrets.length <= 0) {
-    core.setFailed("No React App secrets found to extract");
+  if (appSecrets.length <= 0) {
+    core.setFailed("No app secrets found to extract");
     return {
       startDirectory,
       envValues,
@@ -70,7 +75,7 @@ const createEnv = async ({
   const secretNamesCopied = `${Object.keys(envValues).reduce(
     (a, b) => a + ", " + b
   )} copied`;
-  console.log(secretNamesCopied);
+  core.info(secretNamesCopied);
   return {
     startDirectory,
     envValues,
@@ -101,25 +106,29 @@ const moveEnv = async (payload: {
   });
   //notify where new env file was moved to
   const output = `${fileName} moved to ${directoryDes}`;
-  console.log(output);
-  core.setOutput("reactSecrets", envValues);
+  core.info(output);
+
+  core.setOutput("secrets", envValues);
 };
 export const createEnvFile = async ({
   inputs,
   customName,
   customDirectory,
   workingDirectory,
+  prefixFilter,
 }: {
   inputs: string;
   customName?: string;
   customDirectory?: string;
   workingDirectory?: string;
+  prefixFilter?: string;
 }) => {
   try {
     const payload = await createEnv({
       inputs,
       customName,
       workingDirectory,
+      prefixFilter,
     }); //create env file and return payload
     await moveEnv({ ...payload, customDirectory, workingDirectory }); //move env file
   } catch (err) {
@@ -128,7 +137,8 @@ export const createEnvFile = async ({
   }
 };
 export const main = async () => {
-  const inputs = core.getInput("REACT_APP_SECRETS");
+  const inputs = core.getInput("APP_SECRETS");
+  const prefixFilter = core.getInput("PREFIX_FILTER");
   const customName = core.getInput("ENV_FILE_NAME");
   const customDirectory = core.getInput("DESTINATION_PATH");
   const workingDirectory = core.getInput("WORKING_DIRECTORY_PATH");
@@ -137,6 +147,7 @@ export const main = async () => {
     customName,
     customDirectory,
     workingDirectory,
+    prefixFilter,
   });
 };
 main();

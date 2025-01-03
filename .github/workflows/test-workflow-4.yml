@@ -8,7 +8,7 @@ jobs:
     - name: Create Env
       uses: ./
       with: 
-        REACT_APP_SECRETS: ${{toJson(secrets)}}
+        APP_SECRETS: ${{toJson(secrets)}}
         ENV_FILE_NAME: 'local'
         WORKING_DIRECTORY_PATH: ${{ github.workspace }}/src
     - name: List Env file

@@ -8,6 +8,6 @@ jobs:
     - name: Create Env
       uses: ./
       with: 
-        REACT_APP_SECRETS: ${{toJson(secrets)}}
+        APP_SECRETS: ${{toJson(secrets)}}
     - name: List Env file
       run: ls -a
