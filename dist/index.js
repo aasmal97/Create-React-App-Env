@@ -1041,11 +1041,11 @@ var require_lib = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1061,7 +1061,7 @@ var require_lib = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1146,13 +1146,13 @@ var require_lib = __commonJS({
       }
       readBody() {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2) => __awaiter(this, void 0, void 0, function* () {
             let output = Buffer.alloc(0);
             this.message.on("data", (chunk) => {
               output = Buffer.concat([output, chunk]);
             });
             this.message.on("end", () => {
-              resolve(output.toString());
+              resolve2(output.toString());
             });
           }));
         });
@@ -1361,14 +1361,14 @@ var require_lib = __commonJS({
        */
       requestRaw(info2, data) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve2, reject) => {
             function callbackForResult(err, res) {
               if (err) {
                 reject(err);
               } else if (!res) {
                 reject(new Error("Unknown error"));
               } else {
-                resolve(res);
+                resolve2(res);
               }
             }
             this.requestRawWithCallback(info2, data, callbackForResult);
@@ -1524,12 +1524,12 @@ var require_lib = __commonJS({
         return __awaiter(this, void 0, void 0, function* () {
           retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
           const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
-          return new Promise((resolve) => setTimeout(() => resolve(), ms));
+          return new Promise((resolve2) => setTimeout(() => resolve2(), ms));
         });
       }
       _processResponse(res, options) {
         return __awaiter(this, void 0, void 0, function* () {
-          return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+          return new Promise((resolve2, reject) => __awaiter(this, void 0, void 0, function* () {
             const statusCode = res.message.statusCode || 0;
             const response = {
               statusCode,
@@ -1537,7 +1537,7 @@ var require_lib = __commonJS({
               headers: {}
             };
             if (statusCode === HttpCodes.NotFound) {
-              resolve(response);
+              resolve2(response);
             }
             function dateTimeDeserializer(key, value) {
               if (typeof value === "string") {
@@ -1576,7 +1576,7 @@ var require_lib = __commonJS({
               err.result = response.result;
               reject(err);
             } else {
-              resolve(response);
+              resolve2(response);
             }
           }));
         });
@@ -1593,11 +1593,11 @@ var require_auth = __commonJS({
     "use strict";
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1613,7 +1613,7 @@ var require_auth = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1697,11 +1697,11 @@ var require_oidc_utils = __commonJS({
     "use strict";
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1717,7 +1717,7 @@ var require_oidc_utils = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -1795,11 +1795,11 @@ var require_summary = __commonJS({
     "use strict";
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -1815,7 +1815,7 @@ var require_summary = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -2167,11 +2167,11 @@ var require_core = __commonJS({
     };
     var __awaiter = exports && exports.__awaiter || function(thisArg, _arguments, P, generator) {
       function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-          resolve(value);
+        return value instanceof P ? value : new P(function(resolve2) {
+          resolve2(value);
         });
       }
-      return new (P || (P = Promise))(function(resolve, reject) {
+      return new (P || (P = Promise))(function(resolve2, reject) {
         function fulfilled(value) {
           try {
             step(generator.next(value));
@@ -2187,7 +2187,7 @@ var require_core = __commonJS({
           }
         }
         function step(result) {
-          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          result.done ? resolve2(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
       });
@@ -5119,17 +5119,29 @@ var path = __toESM(require("path"));
 var import_util = __toESM(require("util"));
 var fsPromises = fs.promises;
 var mvPromise = import_util.default.promisify(import_mv.default);
-var findRootPackageJson = (startDirectory) => {
-  const packagePath = path.join(startDirectory, "package.json");
-  if (fs.existsSync(packagePath))
+var parseSercets = (inputs) => {
+  try {
+    if (!inputs)
+      return {};
+    return JSON.parse(inputs);
+  } catch (err) {
+    core.setFailed("Failed to parse secrets");
+    return {};
+  }
+};
+var findRootPackageJson = (startDirectory, currDirectory, prevDirectory) => {
+  if (currDirectory === prevDirectory)
     return startDirectory;
-  const pathAbove = path.join(startDirectory, "..");
-  return findRootPackageJson(pathAbove);
+  const packagePath = path.join(currDirectory, "package.json");
+  if (fs.existsSync(packagePath))
+    return currDirectory;
+  const pathAbove = path.join(currDirectory, "..");
+  return findRootPackageJson(startDirectory, pathAbove, packagePath);
 };
 var moveFile = async ({
-  fileName = "",
-  directoryStart = "",
-  directoryDes = "",
+  fileName,
+  directoryStart,
+  directoryDes,
   extension
 }) => {
   const fullFileName = extension ? `${fileName}.${extension}` : fileName;
@@ -5145,10 +5157,10 @@ var createEnv = async ({
   customName,
   inputs,
   workingDirectory,
-  prefixFilter = ".*"
+  prefixFilter
 }) => {
-  const fileName = customName ? customName : "";
-  const secretsParse = JSON.parse(inputs);
+  const fileName = customName;
+  const secretsParse = inputs;
   const appSecrets = Object.entries(secretsParse).filter(([key, value]) => {
     core.setSecret(value);
     const regex = new RegExp(prefixFilter);
@@ -5161,7 +5173,7 @@ var createEnv = async ({
     (key) => `${key} = "${envValues[key]}"\r
 `
   );
-  const startDirectory = workingDirectory ? workingDirectory : process.cwd();
+  const startDirectory = workingDirectory;
   const startFilePath = path.join(startDirectory, `${fileName}.env`);
   await fsPromises.writeFile(startFilePath, envContent);
   if (appSecrets.length <= 0) {
@@ -5183,9 +5195,8 @@ var createEnv = async ({
   };
 };
 var moveEnv = async (payload) => {
-  const { fileName, envValues, startDirectory } = payload;
-  const currDirectory = payload.workingDirectory ? payload.workingDirectory : process.cwd();
-  const directoryDes = payload.customDirectory ? payload.customDirectory : findRootPackageJson(currDirectory);
+  const { fileName, envValues, startDirectory, customDirectory } = payload;
+  const directoryDes = customDirectory;
   await moveFile({
     fileName,
     directoryStart: startDirectory,
@@ -5216,16 +5227,18 @@ var createEnvFile = async ({
   }
 };
 var main = async () => {
-  const inputs = core.getInput("APP_SECRETS");
-  const prefixFilter = core.getInput("PREFIX_FILTER");
-  const customName = core.getInput("ENV_FILE_NAME");
-  const customDirectory = core.getInput("DESTINATION_PATH");
-  const workingDirectory = core.getInput("WORKING_DIRECTORY_PATH");
+  const inputs = parseSercets(core.getInput("APP_SECRETS"));
+  const prefixFilter = core.getInput("PREFIX_FILTER") || ".*";
+  const customName = core.getInput("ENV_FILE_NAME") || "";
+  const workingDirectory = core.getInput("WORKING_DIRECTORY_PATH") || process.cwd();
+  const resolvedWorkingDirectory = path.resolve(workingDirectory);
+  const customDirectory = core.getInput("DESTINATION_PATH") || findRootPackageJson(resolvedWorkingDirectory, resolvedWorkingDirectory);
+  const resolvedCustomDirectory = path.resolve(customDirectory);
   return createEnvFile({
     inputs,
     customName,
-    customDirectory,
-    workingDirectory,
+    customDirectory: resolvedCustomDirectory,
+    workingDirectory: resolvedWorkingDirectory,
     prefixFilter
   });
 };

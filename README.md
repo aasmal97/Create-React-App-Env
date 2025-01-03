@@ -17,7 +17,7 @@ Below is an example of the minimum appropriate configuration
 
 ```yaml
 name: Create Env File
-uses: aasmal97/create-env-file@v3.0.0
+uses: aasmal97/create-env-file@v3.1.0
 with:
   APP_SECRETS: ${{toJson(secrets)}}
 ```
@@ -26,15 +26,15 @@ with:
 
 - `APP_SECRETS`: Takes in a stringified JSON object that holds all your secrets or variables **_(required)_**
 - `ENV_FILE_NAME`: If you want to customized the .env name (i.e `local.env`, etc), add the desired name here. **_(optional)_**
-- `DESTINATION_PATH`: The ABSOLUTE PATH, that you want the .env file to be generated in **_(optional)_**
-- `WORKING_DIRECTORY_PATH`: The ABSOLUTE PATH, that you want the action to start at **_(optional)_**
+- `WORKING_DIRECTORY_PATH`: The ABSOLUTE PATH, that you want the action to start at. If relative paths exist within this value, they are resolved. For example `home/add/../app` resolves to `home/app`. By default this is `cwd` where the action is run **_(optional)_**
+- `DESTINATION_PATH`: The ABSOLUTE PATH, that you want the .env file to be generated in. If relative paths exist within this value they are resolved. For example `home/add/../app` resolves to `home/app`. By default, this is the directory where the nearest `package.json` is found, from the `WORKING_DIRECTORY_PATH` value, or if this file does not exist, the `cwd` itself. **_(optional)_**
 - `PREFIX_FILTER`: A regex pattern that matches a secret's name, so it can be extracted. Commonly used to match for prefix patterns like `REACT_APP`. If not defined, it matches ALL secrets passed into the action **_(optional)_**
 
 ## Full Example of usage:
 
 ```yaml
 name: Create Env
-uses: aasmal97/create-env-file@v3.0.0
+uses: aasmal97/create-env-file@v3.1.0
 with:
   APP_SECRETS: ${{toJson(secrets)}}
   ENV_FILE_NAME: "local"
@@ -48,7 +48,7 @@ with:
 
 ```yaml
 name: Create Env
-uses: aasmal97/create-env-file@v3.0.0
+uses: aasmal97/create-env-file@v3.1.0
 with:
   WORKING_DIRECTORY_PATH: ${{ github.workspace }}/src
   APP_SECRETS: ${{toJson(secrets)}}
