@@ -9,5 +9,6 @@ jobs:
       uses: ./
       with: 
         APP_SECRETS: ${{toJson(secrets)}}
+        PREFIX_FILTER: "REACT_APP.*"
     - name: List Env file
       run: ls -a
