@@ -18,7 +18,7 @@ Below is an example of the minimum appropriate configuration
 
 ```yaml
 name: Create Env File
-uses: aasmal97/create-env-file@v3.1.1
+uses: aasmal97/create-env-file@v3.1.2
 with:
   APP_SECRETS: ${{toJson(secrets)}}
 ```
@@ -35,7 +35,7 @@ with:
 
 ```yaml
 name: Create Env
-uses: aasmal97/create-env-file@v3.1.1
+uses: aasmal97/create-env-file@v3.1.2
 with:
   APP_SECRETS: ${{toJson(secrets)}}
   ENV_FILE_NAME: "local"
@@ -49,7 +49,7 @@ with:
 
 ```yaml
 name: Create Env
-uses: aasmal97/create-env-file@v3.1.1
+uses: aasmal97/create-env-file@v3.1.2
 with:
   WORKING_DIRECTORY_PATH: ${{ github.workspace }}/src
   APP_SECRETS: ${{toJson(secrets)}}

@@ -1,6 +1,6 @@
 {
   "name": "create-env-file",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Create a .env file in a github runner from environment variables. Can be used prior to the build step of an app",
   "main": "dist/index.js",
   "scripts": {
