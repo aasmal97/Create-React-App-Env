@@ -10,7 +10,7 @@ This Github Action generates a local .env file in a github runner, by extracting
 
 ## How to Use:
 Below is an example of the minimum appropriate configuration 
-```
+```yaml
 name: Create Env File
 uses: aasmal97/create-env-file@v3.0.0
 with: 
@@ -24,7 +24,7 @@ with:
 - `WORKING_DIRECTORY_PATH`: The ABSOLUTE PATH, that you want the action to start at ***(optional)***
 - `PREFIX_FILTER`: A regex pattern that matches a secret's name, so it can be extracted. Commonly used to match for prefix patterns like `REACT_APP`
 ## Full Example of usage:
-```
+```yaml
 name: Create Env
 uses: aasmal97/create-env-file@v3.0.0
 with: 
@@ -36,7 +36,7 @@ with:
 - Due to multiple projects having different configs and project directory structures, it is best to provide a `DESTINATION_PATH` value, so the location of the file being generated does not change and is always known. 
 - If you wish to rely on the auto-detection of the nearest `package.json`, and not specify an absolute destination path, try to ensure consistency by setting a `WORKING_DIRECTORY_PATH` of the action as close as possible, to the package.json file. Below is an example of this: 
 
-```
+```yaml
 name: Create Env
 uses: aasmal97/create-env-file@v3.0.0
 with: 
